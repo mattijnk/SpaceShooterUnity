@@ -4,8 +4,8 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 
 	private Transform myTransform;
-
 	public int projectileSpeed = 7;
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,4 +29,11 @@ public class Projectile : MonoBehaviour {
 				}
 		}
 
+		void OnTriggerEnter (Collider collider)
+		{
+				if (collider.gameObject.CompareTag("Enemy")) {
+						Player.score += 50;
+						Destroy (this.gameObject);
+				}
+		}
 }
